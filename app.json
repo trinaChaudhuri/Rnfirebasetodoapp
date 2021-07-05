@@ -20,6 +20,9 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.prithvi.chits",
+      "versionCode": 1,
+      "permissions": ["READ_CONTACTS","WRITE_CONTACTS","READ_SMS"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
