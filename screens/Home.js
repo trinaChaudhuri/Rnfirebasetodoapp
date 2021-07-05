@@ -56,9 +56,8 @@ const Home = ({ navigation }) => {
   };
 
   const pressHandler = () => {
-    // let tasksRef = firebase.database().ref('/tasks/');
-    // let createdTask = tasksRef.push();
-    navigation.navigate('Calendar', {user: 1, yfg: 3});
+    
+    navigation.navigate('Calendar');
     // navigation.navigate('Calendar');
   }
 
