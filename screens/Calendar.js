@@ -20,8 +20,6 @@ export default function Calendar({ route, navigation }) {
   // console.log(route.params);
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const startDate = selectedStartDate ? selectedStartDate.toString() : '';
-  // console.log(startDate.toString())
-  
   const onDateChange = (date, type) => {
       setSelectedStartDate(date);
       // console.log(date);
