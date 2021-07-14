@@ -15,9 +15,7 @@ import _ from 'lodash';
 import firebase from 'firebase';
  
 export default function Calendar({ route, navigation }) {
-  
-  // console.log(route);
-  // console.log(route.params);
+
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const startDate = selectedStartDate ? selectedStartDate.toString() : '';
   const onDateChange = (date, type) => {
