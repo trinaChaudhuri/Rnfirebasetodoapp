@@ -1,19 +1,33 @@
 import * as React from 'react';
-import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
 import Calendar from '../screens/Calendar';
 import Contactspage from '../screens/Contacts';
 import 'react-native-gesture-handler';
+import PhoneAuthScreen from '../screens/Phoneauth';
 
 
 const Stack = createStackNavigator();
 
+const Login = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="PhoneAuth" component={PhoneAuthScreen}/>
+      </Stack.Navigator>
+    );
+  }
+  
+
 export default function Navi() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
+            <Stack.Navigator initialRouteName="Login">
+              <Stack.Screen
+                   name="Login"
+                   component={Login}
+                   options={{ headerShown: false }}
+               />
               <Stack.Screen name="Home" component={Home} />
               <Stack.Screen name="Calendar" component={Calendar} />
               <Stack.Screen name="Contactspage" component={Contactspage} />
