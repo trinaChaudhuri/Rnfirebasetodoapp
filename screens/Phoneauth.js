@@ -13,26 +13,6 @@ import * as FirebaseRecaptcha from 'expo-firebase-recaptcha';
 import * as firebase from 'firebase';
 import Constants from 'expo-constants';
 
-
-// const FIREBASE_CONFIG = {
-//     apiKey: "AIzaSyDbv19TEEzws77Dx3cEidxA8yMCwZRp4dY",
-//     authDomain: "reactnativetut-402e8.firebaseapp.com",
-//     databaseURL: "https://reactnativetut-402e8-default-rtdb.firebaseio.com/",
-//     projectId: "reactnativetut-402e8",
-//     storageBucket: "reactnativetut-402e8.appspot.com",
-//     messagingSenderId: "625425345497",
-//     appId: "1:625425345497:web:5b738b4d41cbcc8be047c8",
-//     measurementId: "G-0E4JNC99XS"
-//   };
-  
-//   try {
-//     if (FIREBASE_CONFIG.apiKey) {
-//       firebase.initializeApp(FIREBASE_CONFIG);
-//     }
-//   } catch (err) {
-//     // ignore app already initialized error on snack
-//   }
-
 export default function PhoneAuthScreen({navigation}) {
   const recaptchaVerifier = React.useRef(null);
   const verificationCodeTextInput = React.useRef(null);
@@ -53,7 +33,6 @@ export default function PhoneAuthScreen({navigation}) {
           firebaseConfig={Constants.manifest.extra.firebase}
         />
         <Text style={styles.title}>CHITS</Text>
-        {/* <Text style={styles.subtitle}>using expo-firebase-recaptcha</Text> */}
         <Text style={styles.text}>Enter phone number</Text>
         <TextInput
           style={styles.textInput}
@@ -63,7 +42,6 @@ export default function PhoneAuthScreen({navigation}) {
           textContentType="telephoneNumber"
           placeholder="+1 999 999 9999"
           editable={!verificationId}
-        //   onChangeText={(phoneNumber: string) => setPhoneNumber(phoneNumber)}
           onChangeText={phoneNumber => setPhoneNumber(phoneNumber.replace(/\s+/g, ''))}
         />
         <Button
@@ -102,7 +80,6 @@ export default function PhoneAuthScreen({navigation}) {
           style={styles.textInput}
           editable={!!verificationId}
           placeholder="123456"
-        //   onChangeText={(verificationCode: string) => setVerificationCode(verificationCode)}
           onChangeText={verificationCode=> setVerificationCode(verificationCode)}
           
         />
@@ -140,13 +117,6 @@ export default function PhoneAuthScreen({navigation}) {
         {confirmError && <Text style={styles.error}>{`Error: ${confirmError.message}`}</Text>}
         {confirmInProgress && <ActivityIndicator style={styles.loader} />}
       </View>
-      {/* {!isConfigValid && (
-        <View style={styles.overlay} pointerEvents="none">
-          <Text style={styles.overlayText}>
-            To get started, set a valid FIREBASE_CONFIG in App.tsx.
-          </Text>
-        </View>
-      )} */}
     </View>
   );
 }

@@ -19,7 +19,7 @@ import { constant } from 'lodash';
 //   messagingSenderId: "625425345497",
 //   appId: "1:625425345497:web:5b738b4d41cbcc8be047c8",
 //   measurementId: "G-0E4JNC99XS"
-// };
+// }; firebaseConfig is now Constants.manifest.extra.firebase which is being called from app.json
  
  firebase.initializeApp(Constants.manifest.extra.firebase);
 
