@@ -13,14 +13,22 @@ import {
 import Header from './header';
 import firebase from 'firebase';
 
+// console.log(firebase.auth().currentUser.uid);
+
 import _ from 'lodash';
 
 //import {ListItem} from 'react-native-elements';
+
+
 
 const Home = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [newTask, setNewTask] = useState(' ');
   const [tasks, setTasks] = useState([]);
+
+  let authedUser = firebase.auth().currentUser.uid;
+  console.log(authedUser);
+  // const [user, setUser] = useState();
 
   useEffect(() => {
     getTasks();
@@ -38,6 +46,8 @@ const Home = ({ navigation }) => {
       setTasks(valToArray);
     });
   };
+
+ 
 
   const insertTask = () => {
     setModalVisible(false);
@@ -86,9 +96,9 @@ const Home = ({ navigation }) => {
 
   const keyExtractor = (item, index) => index.toString();
 
-
+  //userobj.user == autduser.id
   const Displaytasks = ({userobj}) => {
-    if (userobj.user == 1){
+    if (userobj.user == authedUser){
       return <Text style={styles.item}>{userobj.task} </Text>
     }
      return <View />;

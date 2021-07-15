@@ -23,6 +23,7 @@ export default function PhoneAuthScreen({navigation}) {
   const [verificationCode, setVerificationCode] = React.useState('');
   const [confirmError, setConfirmError] = React.useState();
   const [confirmInProgress, setConfirmInProgress] = React.useState(false);
+  const [userAu, setUserAu] = React.useState(null);
   const isConfigValid = !!Constants.manifest.extra.firebase.apiKey;
 
   return (
@@ -55,7 +56,6 @@ export default function PhoneAuthScreen({navigation}) {
               setVerificationId('');
               const verificationId = await phoneProvider.verifyPhoneNumber(
                 phoneNumber,
-                // @ts-ignore
                 recaptchaVerifier.current
               );
               setVerifyInProgress(false);
@@ -103,7 +103,8 @@ export default function PhoneAuthScreen({navigation}) {
                 Alert.alert('Successfully logged in', '✅', [
                   {
                     text: 'Close',
-                    onPress: () => navigation.navigate('Home'),
+                    // onPress: () => navigation.navigate('Home'),
+                    onPress: () => navigation.navigate('Loading'),
                   },
                 ]);
               }
