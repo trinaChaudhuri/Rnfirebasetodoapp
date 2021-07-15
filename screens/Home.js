@@ -18,7 +18,6 @@ import moment from 'moment';
 
 import _ from 'lodash';
 
-// console.log(moment().toString());
 
 //import {ListItem} from 'react-native-elements';
 
@@ -28,8 +27,16 @@ const Home = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [newTask, setNewTask] = useState(' ');
   const [tasks, setTasks] = useState([]);
+  const [authenticated, setAutheticated] = useState(false);
+
+  firebase.auth().onAuthStateChanged((userauth) => {
+    if (userauth) {
+      setAutheticated(true);
+    }
+  });
 
   let authedUser = firebase.auth().currentUser.uid;
+  let today = moment().set({'hour':12,'minute':0,'second':0,'millisecond':0}) .toString();
   // console.log(authedUser);
   // const [user, setUser] = useState();
 
@@ -58,7 +65,7 @@ const Home = ({ navigation }) => {
     let tasksRef = firebase.database().ref('/tasks/');
     let createdTask = tasksRef.push();
 
-    let task = {id: createdTask.key, task: newTask, done: false, date: moment().toString(), user: authedUser};
+    let task = {id: createdTask.key, task: newTask, done: false, date: today, user: authedUser};
 
     createdTask
       .set(task)
@@ -169,10 +176,27 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#000',
   },
+  // modal: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
   modal: {
     flex: 1,
+    margin: 20,
+    backgroundColor: "white",
     justifyContent: 'center',
-    alignItems: 'center',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
   },
   listSection: {
     flex: 1,
