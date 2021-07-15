@@ -12,10 +12,13 @@ import {
 } from 'react-native';
 import Header from './header';
 import firebase from 'firebase';
+import moment from 'moment';
 
 // console.log(firebase.auth().currentUser.uid);
 
 import _ from 'lodash';
+
+// console.log(moment().toString());
 
 //import {ListItem} from 'react-native-elements';
 
@@ -27,7 +30,7 @@ const Home = ({ navigation }) => {
   const [tasks, setTasks] = useState([]);
 
   let authedUser = firebase.auth().currentUser.uid;
-  console.log(authedUser);
+  // console.log(authedUser);
   // const [user, setUser] = useState();
 
   useEffect(() => {
@@ -55,7 +58,7 @@ const Home = ({ navigation }) => {
     let tasksRef = firebase.database().ref('/tasks/');
     let createdTask = tasksRef.push();
 
-    let task = {id: createdTask.key, task: newTask, done: false};
+    let task = {id: createdTask.key, task: newTask, done: false, date: moment().toString(), user: authedUser};
 
     createdTask
       .set(task)
@@ -73,6 +76,16 @@ const Home = ({ navigation }) => {
 
   const pushHandler = () => {
     navigation.navigate('Contactspage');
+  }
+
+  const signoutHandler = () => {
+    firebase.auth().signOut().then(() => {
+       navigation.navigate('Login');
+    }).catch((error) => {
+      console.log("An error happened");
+    });
+    
+
   }
 
 
@@ -136,6 +149,8 @@ const Home = ({ navigation }) => {
         <Button title="Add task" onPress={() => setModalVisible(true)} />
         <Button title="go to calendar page" onPress={pressHandler}/>
         <Button title="contacts" onPress={pushHandler}/>
+        <Button title="Signout" onPress={signoutHandler}/>
+        
       </View>
     </View>
   );
