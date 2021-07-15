@@ -16,6 +16,7 @@ import firebase from 'firebase';
  
 export default function Calendar({ route, navigation }) {
 
+  let authedUser = firebase.auth().currentUser.uid;
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const startDate = selectedStartDate ? selectedStartDate.toString() : '';
   const onDateChange = (date, type) => {
@@ -50,7 +51,7 @@ export default function Calendar({ route, navigation }) {
 
 
   const Displaytasks = ({tasksobj}) => {
-    if (tasksobj.user == 1){
+    if (tasksobj.user == authedUser){
       return <Text style={styles.item}>{tasksobj.task} </Text>
     }
      return <View />;

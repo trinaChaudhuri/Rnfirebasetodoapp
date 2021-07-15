@@ -6,6 +6,7 @@ import Calendar from '../screens/Calendar';
 import Contactspage from '../screens/Contacts';
 import 'react-native-gesture-handler';
 import PhoneAuthScreen from '../screens/Phoneauth';
+import LoadingScreen from '../screens/LoadingScreen';
 
 
 const Stack = createStackNavigator();
@@ -28,7 +29,8 @@ export default function Navi() {
                    component={Login}
                    options={{ headerShown: false }}
                />
-              <Stack.Screen name="Home" component={Home} />
+              <Stack.Screen name='Loading' component={LoadingScreen} options={{ headerShown: false }}/>
+              <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
               <Stack.Screen name="Calendar" component={Calendar} />
               <Stack.Screen name="Contactspage" component={Contactspage} />
             </Stack.Navigator>
