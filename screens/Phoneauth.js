@@ -98,6 +98,7 @@ export default function PhoneAuthScreen({navigation}) {
               setConfirmInProgress(false);
               setVerificationId('');
               setVerificationCode('');
+              await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
               verificationCodeTextInput.current?.clear();
               if (authResult) {
                 Alert.alert('Successfully logged in', '✅', [

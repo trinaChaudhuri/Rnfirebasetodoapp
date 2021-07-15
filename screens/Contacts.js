@@ -7,15 +7,16 @@ import {
   SafeAreaView,
   FlatList,
   ActivityIndicator,
-  PermissionsAndroid
+  PermissionsAndroid,
 } from 'react-native';
+import { TouchableOpacity } from "react-native";
 import * as Contacts from 'expo-contacts';
 import * as Permissions from 'expo-permissions';
 import Expo from 'expo';
 
 
 export default class Contactspage extends React.Component {
-  constructor() {
+  constructor({navigation}) {
     super();
     this.state = {
       isLoading: false,
@@ -45,12 +46,20 @@ export default class Contactspage extends React.Component {
     this.loadContacts();
   }
 
+  
+  ContactPress = () => {
+    navigation.navigate('Meetscd');
+  }
+
+
   renderItem = ({ item }) => (
     <View style={{ minHeight: 20, padding: 2 }}>
+      <TouchableOpacity onPress={this.ContactPress}>
       <Text style={{ color: '#000000', fontWeight: 'bold',backgroundColor: '#ECF4F7', fontSize: 24, padding: 20, marginVertical: 8, marginHorizontal: 16 }}>
         {item.firstName + ' '}
         {item.lastName}
       </Text>
+      </TouchableOpacity>
       <Text style={{ color: '#000000'}}>
         {item.phoneNumbers[0].digits}
       </Text>
