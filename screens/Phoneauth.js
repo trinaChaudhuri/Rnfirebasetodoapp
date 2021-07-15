@@ -74,7 +74,7 @@ export default function PhoneAuthScreen({navigation}) {
         ) : (
           undefined
         )}
-        <Text style={styles.text}>Enter verification code</Text>
+        <Text style={styles.text}>Enter verification(OTP) code</Text>
         <TextInput
           ref={verificationCodeTextInput}
           style={styles.textInput}

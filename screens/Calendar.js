@@ -21,7 +21,7 @@ export default function Calendar({ route, navigation }) {
   const startDate = selectedStartDate ? selectedStartDate.toString() : '';
   const onDateChange = (date, type) => {
       setSelectedStartDate(date);
-      // console.log(date);
+      console.log(selectedStartDate);
   };
 
 
