@@ -14,6 +14,7 @@ import * as Contacts from 'expo-contacts';
 import * as Permissions from 'expo-permissions';
 import Expo from 'expo';
 import firebase from 'firebase/firestore'
+import { AntDesign } from '@expo/vector-icons';
 
 export default class Contactspage extends React.Component {
   constructor() {
@@ -45,11 +46,11 @@ export default class Contactspage extends React.Component {
   componentDidMount() {
     this.setState({ isLoading: true });
     this.loadContacts();
-    async function getMarker() {
-      const snapshot = await firebase.firestore().collection('users').get()
-      return snapshot.docs.map(doc => doc.data());
-    }
-    getMarker();
+    // async function getMarker() {
+    //   const snapshot = await firebase.firestore().collection('users').get()
+    //   return snapshot.docs.map(doc => doc.data());
+    // }
+    // getMarker();
   }
   
   renderItem = ({ item,index }) => (   
@@ -109,7 +110,11 @@ export default class Contactspage extends React.Component {
   render() {
     return (
       <SafeAreaView >
-        <Text style={{fontSize:22,color:'black',marginTop:40}}>Back</Text>
+        <View style={{flexDirection:'row'}}>
+        <AntDesign name="arrowleft" size={20} color="black" style={{marginTop:43,marginLeft:5}}/>
+        <Text style={{fontSize:22,color:'black',marginTop:40,marginLeft:5}}>Back</Text>
+        </View>
+        
         <View style={{padding:10}}>
         <TextInput
            placeholder="Search People to invite"
