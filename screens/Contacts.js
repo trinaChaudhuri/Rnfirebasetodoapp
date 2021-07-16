@@ -97,7 +97,8 @@ export default class Contactspage extends React.Component {
              borderRightWidth:2,
              borderBottomWidth:5,
              borderRadius:16,
-             padding:10
+             padding:10,
+             
            }}
            onChangeText={value => this.searchContacts(value)}
          />
