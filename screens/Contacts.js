@@ -46,11 +46,6 @@ export default class Contactspage extends React.Component {
   componentDidMount() {
     this.setState({ isLoading: true });
     this.loadContacts();
-    // async function getMarker() {
-    //   const snapshot = await firebase.firestore().collection('users').get()
-    //   return snapshot.docs.map(doc => doc.data());
-    // }
-    // getMarker();
   }
   
   renderItem = ({ item,index }) => (   
@@ -80,33 +75,6 @@ export default class Contactspage extends React.Component {
     this.setState({ contacts: filteredContacts });
   };
   
-  // async function findFriendByNumber({ number, user }: PhoneNumber) {
-  //   console.log(`Checking for ${number}...`);
-  //   try {
-  //     const userRecord = await admin.auth().getUserByPhoneNumber(number);
-  //     const { displayName, uid } = userRecord;
-  
-  //     return Promise.resolve({
-  //       number,
-  //       user: {
-  //         displayName,
-  //         number,
-  //         uid,
-  //       },
-  //     });
-  //   } catch (error) {
-  //     if (error.code !== "auth/user-not-found") {
-  //       console.log(error);
-  //     }
-  //     return Promise.resolve({ number, user });
-  //   }
-  // }
-  
-
-  
-
-
-
   render() {
     return (
       <SafeAreaView >
@@ -190,50 +158,3 @@ const styles = StyleSheet.create({
 
 
 
-// <SafeAreaView style={{ flex: 1 }}>
-      //   <View style={{ backgroundColor: '#FFFFFF'}} />
-      //   <Text>Back</Text>
-      //   <TextInput
-      //     placeholder="Search People"
-      //     placeholderTextColor="#414142"
-      //     style={{
-      //       backgroundColor: '#FFFFFF',
-      //       height: 50,
-      //       fontSize: 28,
-      //       color: 'black',
-      //       borderBottomWidth: 2,
-      //       borderBottomColor: '#000000'
-      //     }}
-      //     onChangeText={value => this.searchContacts(value)}
-      //   />
-      //   <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
-      //     {this.state.isLoading ? (
-      //       <View
-      //         style={{
-      //           ...StyleSheet.absoluteFill,
-      //           alignItems: 'center',
-      //           justifyContent: 'center'
-      //         }}
-      //       >
-      //         <ActivityIndicator size="large" color="#bad555" />
-      //       </View>
-      //     ) : null}
-      //     <FlatList
-      //       data={this.state.contacts}
-      //       renderItem={this.renderItem}
-      //       keyExtractor={(item, index) => index.toString()}
-      //       ListEmptyComponent={() => (
-      //         <View
-      //           style={{
-      //             flex: 1,
-      //             alignItems: 'center',
-      //             justifyContent: 'center',
-      //             marginTop: 50
-      //           }}
-      //         >
-      //           <Text style={{ color: '#bad555' }}>No Contacts Found</Text>
-      //         </View>
-      //       )}
-      //     />
-      //   </View>
-      // </SafeAreaView>
